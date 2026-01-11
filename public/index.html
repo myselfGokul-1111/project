@@ -369,11 +369,475 @@ button.red:hover {
     margin-top: 20px;
 }
 
+/* Room Occupancy Styles */
+.roomOccupancySection {
+    margin-top: 160px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+/* Temperature Monitor Styles */
+.temperatureSection {
+    margin-top: 80px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+.temperatureSection h2 {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.temperatureDisplay {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.tempCircle {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+}
+
+.tempCircle svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.tempCircle circle {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+}
+
+.tempCircle .bg-circle {
+    stroke: #e2e8f0;
+}
+
+.tempCircle .progress-circle {
+    transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
+}
+
+.tempValue {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.tempNumber {
+    font-size: 42px;
+    font-weight: 800;
+    font-family: 'Courier New', Courier, monospace;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.tempLabel {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #718096;
+}
+
+.tempUnit {
+    font-size: 24px;
+    font-weight: 600;
+    color: #a0aec0;
+}
+
+.tempPeakLogs {
+    background: #f7fafc;
+    border-radius: 16px;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 400px;
+    border: 2px solid #e2e8f0;
+}
+
+.tempPeakLogs h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d3748;
+    position: sticky;
+    top: 0;
+    background: #f7fafc;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+    z-index: 10;
+}
+
+.tempLogEntry {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.tempLogEntry:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tempLogEntry.fever {
+    border-left-color: #f5576c;
+}
+
+.tempLogEntry.high {
+    border-left-color: #f093fb;
+}
+
+.tempLogEntry.elevated {
+    border-left-color: #fbbf24;
+}
+
+.tempLogIcon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.tempLogDetails {
+    flex: 1;
+}
+
+.tempLogDate {
+    font-size: 11px;
+    font-weight: 700;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.tempLogTime {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d3748;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.tempLogReading {
+    font-size: 24px;
+    font-weight: 800;
+    font-family: 'Courier New', Courier, monospace;
+    flex-shrink: 0;
+}
+
+.tempLogStatus {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 4px;
+    display: inline-block;
+}
+
+.tempLogStatus.fever {
+    background: linear-gradient(135deg, #fed7d7 0%, #fc8181 100%);
+    color: #742a2a;
+}
+
+.tempLogStatus.high {
+    background: linear-gradient(135deg, #fce7f3 0%, #f9a8d4 100%);
+    color: #831843;
+}
+
+.tempLogStatus.elevated {
+    background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+    color: #78350f;
+}
+
+.noTempLogs {
+    text-align: center;
+    color: #a0aec0;
+    padding: 40px 20px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.tempPeakLogs::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tempPeakLogs::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 4px;
+}
+
+.tempPeakLogs::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 4px;
+}
+
+.tempPeakLogs::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+.roomOccupancySection h2 {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2d3748;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.roomOccupancy {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+}
+
+.roomStatus {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.roomStatus::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.roomStatus.occupied::before {
+    opacity: 1;
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, 20px); }
+}
+
+.roomStatus.vacant {
+    background: linear-gradient(135deg, #fc8181 0%, #f56565 100%);
+    border: 3px solid #e53e3e;
+    box-shadow: 0 8px 24px rgba(245,101,101,0.3), inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.roomStatus.occupied {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    border: 3px solid #2f855a;
+    box-shadow: 0 8px 24px rgba(72,187,120,0.4), inset 0 2px 8px rgba(0,0,0,0.1);
+    transform: scale(1.02);
+}
+
+.roomLabel {
+    font-size: 32px;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.roomStatusText {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 24px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.roomPulse {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.7);
+    animation: pulsate 2s infinite;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes pulsate {
+    0% { 
+        box-shadow: 0 0 0 0 rgba(255,255,255,0.7);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(255,255,255,0);
+        transform: scale(1.1);
+    }
+    100% { 
+        box-shadow: 0 0 0 0 rgba(255,255,255,0);
+        transform: scale(1);
+    }
+}
+
+.entryLogs {
+    background: #f7fafc;
+    border-radius: 16px;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 400px;
+    min-height: 280px;
+    border: 2px solid #e2e8f0;
+}
+
+.entryLogs h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d3748;
+    position: sticky;
+    top: 0;
+    background: #f7fafc;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+    z-index: 10;
+}
+
+.logEntry {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logEntry:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.logEntry.entry {
+    border-left-color: #48bb78;
+}
+
+.logEntry.exit {
+    border-left-color: #fc8181;
+}
+
+.logIcon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.logDetails {
+    flex: 1;
+}
+
+.logDate {
+    font-size: 11px;
+    font-weight: 700;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.logTime {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d3748;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.logStatus {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.logStatus.entered {
+    background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%);
+    color: #22543d;
+}
+
+.logStatus.left {
+    background: linear-gradient(135deg, #fed7d7 0%, #fc8181 100%);
+    color: #742a2a;
+}
+
+.noLogs {
+    text-align: center;
+    color: #a0aec0;
+    padding: 40px 20px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* Custom scrollbar for logs */
+.entryLogs::-webkit-scrollbar {
+    width: 8px;
+}
+
+.entryLogs::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 4px;
+}
+
+.entryLogs::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 4px;
+}
+
+.entryLogs::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
 @media(max-width:1024px){
     .wrapper { 
         grid-template-areas: "ecg ecg" "topRight bottomRight";
         grid-template-columns: 1fr 1fr; 
         grid-template-rows: 1.5fr 1fr;
+    }
+    .roomOccupancy {
+        grid-template-columns: 1fr 1.5fr;
     }
 }
 
@@ -455,6 +919,34 @@ button.red:hover {
         font-size: 18px;
         padding: 16px 20px;
     }
+    .roomOccupancy {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .roomStatus {
+        min-height: 200px;
+        padding: 24px;
+    }
+    .roomLabel {
+        font-size: 28px;
+    }
+    .entryLogs {
+        min-height: 300px;
+    }
+    .temperatureDisplay {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .tempCircle {
+        width: 200px;
+        height: 200px;
+    }
+    .tempNumber {
+        font-size: 36px;
+    }
+    .tempPeakLogs {
+        max-height: 350px;
+    }
 }
 
 @media(max-width:480px){
@@ -486,6 +978,20 @@ button.red:hover {
     }
     .mpuNumber {
         font-size: 16px;
+    }
+    .roomOccupancySection {
+        padding: 16px;
+    }
+    .roomStatus {
+        padding: 20px;
+        min-height: 180px;
+    }
+    .roomLabel {
+        font-size: 24px;
+    }
+    .roomStatusText {
+        font-size: 16px;
+        padding: 8px 16px;
     }
 }
 </style>
@@ -526,6 +1032,69 @@ button.red:hover {
         <div class="containerInner bottomRightContainer">
             <h2>🎯 3D Orientation</h2>
             <canvas id="threeCanvas"></canvas>
+        </div>
+    </div>
+
+    <!-- Room Occupancy Section -->
+    <div class="roomOccupancySection">
+        <h2>🚪 Room Occupancy Monitor</h2>
+        <div class="roomOccupancy">
+            <div id="roomStatus" class="roomStatus vacant">
+                <div class="roomLabel">ROOM 1</div>
+                <div class="roomStatusText" id="roomStatusText">VACANT</div>
+                <div class="roomPulse"></div>
+            </div>
+            <div class="entryLogs">
+                <h3>📋 Entry Logs</h3>
+                <div id="entryLogsList">
+                    <div class="noLogs">No entry logs yet</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Temperature Monitor Section -->
+    <div class="temperatureSection">
+        <h2>🌡️ Temperature Monitor</h2>
+        <div class="temperatureDisplay">
+            <div>
+                <div class="tempCircle">
+                    <svg viewBox="0 0 240 240">
+                        <circle class="bg-circle" cx="120" cy="120" r="100"></circle>
+                        <circle id="bodyTempCircle" class="progress-circle" cx="120" cy="120" r="100" 
+                                stroke="#667eea" 
+                                stroke-dasharray="628.32" 
+                                stroke-dashoffset="628.32"></circle>
+                    </svg>
+                    <div class="tempValue">
+                        <span id="bodyTempNumber" class="tempNumber" style="color:#667eea;">--</span>
+                        <span class="tempUnit">°C</span>
+                        <span class="tempLabel">Body Temp</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="tempCircle">
+                    <svg viewBox="0 0 240 240">
+                        <circle class="bg-circle" cx="120" cy="120" r="100"></circle>
+                        <circle id="ambientTempCircle" class="progress-circle" cx="120" cy="120" r="100" 
+                                stroke="#4facfe" 
+                                stroke-dasharray="628.32" 
+                                stroke-dashoffset="628.32"></circle>
+                    </svg>
+                    <div class="tempValue">
+                        <span id="ambientTempNumber" class="tempNumber" style="color:#4facfe;">--</span>
+                        <span class="tempUnit">°C</span>
+                        <span class="tempLabel">Ambient Temp</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tempPeakLogs">
+            <h3>🔥 Body Temperature Peak Logs</h3>
+            <div id="tempPeakLogsList">
+                <div class="noTempLogs">No temperature peaks recorded</div>
+            </div>
         </div>
     </div>
 </section>
@@ -648,6 +1217,231 @@ document.querySelectorAll('.tabs button').forEach(btn=>{
     });
 });
 
+// -------- Temperature State --------
+let temperaturePeakLogs = [];
+const NORMAL_TEMP = 37.0;
+const ELEVATED_TEMP = 37.5;
+const HIGH_TEMP = 38.0;
+const FEVER_TEMP = 38.5;
+
+function updateTemperature(bodyTemp, ambientTemp) {
+    // Update body temperature circle
+    const bodyTempCircle = document.getElementById('bodyTempCircle');
+    const bodyTempNumber = document.getElementById('bodyTempNumber');
+    
+    // Body temp range: 35°C to 42°C (display range)
+    const bodyMinTemp = 35;
+    const bodyMaxTemp = 42;
+    const bodyTempPercent = Math.min(Math.max((bodyTemp - bodyMinTemp) / (bodyMaxTemp - bodyMinTemp), 0), 1);
+    const bodyCircumference = 628.32;
+    const bodyOffset = bodyCircumference * (1 - bodyTempPercent);
+    
+    bodyTempCircle.style.strokeDashoffset = bodyOffset;
+    bodyTempNumber.textContent = bodyTemp.toFixed(1);
+    
+    // Dynamic color for body temperature
+    let bodyColor;
+    if (bodyTemp >= FEVER_TEMP) {
+        bodyColor = '#f5576c'; // Red - Fever
+    } else if (bodyTemp >= HIGH_TEMP) {
+        bodyColor = '#f093fb'; // Pink - High
+    } else if (bodyTemp >= ELEVATED_TEMP) {
+        bodyColor = '#fbbf24'; // Yellow - Elevated
+    } else {
+        bodyColor = '#38ef7d'; // Green - Normal
+    }
+    
+    bodyTempCircle.setAttribute('stroke', bodyColor);
+    bodyTempNumber.style.color = bodyColor;
+    
+    // Update ambient temperature circle
+    const ambientTempCircle = document.getElementById('ambientTempCircle');
+    const ambientTempNumber = document.getElementById('ambientTempNumber');
+    
+    // Ambient temp range: 15°C to 35°C (display range)
+    const ambientMinTemp = 15;
+    const ambientMaxTemp = 35;
+    const ambientTempPercent = Math.min(Math.max((ambientTemp - ambientMinTemp) / (ambientMaxTemp - ambientMinTemp), 0), 1);
+    const ambientOffset = bodyCircumference * (1 - ambientTempPercent);
+    
+    ambientTempCircle.style.strokeDashoffset = ambientOffset;
+    ambientTempNumber.textContent = ambientTemp.toFixed(1);
+    
+    // Dynamic color for ambient temperature
+    let ambientColor;
+    if (ambientTemp >= 30) {
+        ambientColor = '#f5576c'; // Hot
+    } else if (ambientTemp >= 25) {
+        ambientColor = '#fbbf24'; // Warm
+    } else if (ambientTemp >= 20) {
+        ambientColor = '#38ef7d'; // Comfortable
+    } else {
+        ambientColor = '#4facfe'; // Cool
+    }
+    
+    ambientTempCircle.setAttribute('stroke', ambientColor);
+    ambientTempNumber.style.color = ambientColor;
+    
+    // Log temperature peaks (elevated or above)
+    if (bodyTemp >= ELEVATED_TEMP) {
+        logTemperaturePeak(bodyTemp);
+    }
+}
+
+function logTemperaturePeak(bodyTemp) {
+    const now = new Date();
+    
+    // Check if we should log this (avoid duplicates within 1 minute)
+    const lastLog = temperaturePeakLogs[0];
+    if (lastLog && (now - lastLog.timestamp) < 60000) {
+        return; // Don't log if less than 1 minute since last log
+    }
+    
+    let status, icon;
+    if (bodyTemp >= FEVER_TEMP) {
+        status = 'fever';
+        icon = '🔴';
+    } else if (bodyTemp >= HIGH_TEMP) {
+        status = 'high';
+        icon = '🟠';
+    } else {
+        status = 'elevated';
+        icon = '🟡';
+    }
+    
+    const logEntry = {
+        timestamp: now,
+        temperature: bodyTemp,
+        status: status,
+        icon: icon,
+        date: now.toLocaleDateString('en-US', { 
+            weekday: 'short', 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric' 
+        }),
+        time: now.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            second: '2-digit' 
+        })
+    };
+    
+    temperaturePeakLogs.unshift(logEntry);
+    
+    // Keep only last 100 logs
+    if (temperaturePeakLogs.length > 100) {
+        temperaturePeakLogs = temperaturePeakLogs.slice(0, 100);
+    }
+    
+    updateTemperaturePeakLogsDisplay();
+}
+
+function updateTemperaturePeakLogsDisplay() {
+    const tempPeakLogsList = document.getElementById('tempPeakLogsList');
+    
+    if (temperaturePeakLogs.length === 0) {
+        tempPeakLogsList.innerHTML = '<div class="noTempLogs">No temperature peaks recorded</div>';
+        return;
+    }
+    
+    tempPeakLogsList.innerHTML = temperaturePeakLogs.map(log => {
+        let statusLabel;
+        if (log.status === 'fever') {
+            statusLabel = 'FEVER';
+        } else if (log.status === 'high') {
+            statusLabel = 'HIGH';
+        } else {
+            statusLabel = 'ELEVATED';
+        }
+        
+        return `
+            <div class="tempLogEntry ${log.status}">
+                <div class="tempLogIcon">${log.icon}</div>
+                <div class="tempLogDetails">
+                    <div class="tempLogDate">${log.date}</div>
+                    <div class="tempLogTime">${log.time}</div>
+                    <div class="tempLogStatus ${log.status}">${statusLabel}</div>
+                </div>
+                <div class="tempLogReading" style="color: ${
+                    log.status === 'fever' ? '#f5576c' : 
+                    log.status === 'high' ? '#f093fb' : '#fbbf24'
+                };">${log.temperature.toFixed(1)}°C</div>
+            </div>
+        `;
+    }).join('');
+}
+
+// -------- Room Occupancy State --------
+let currentRoomState = 0;
+let entryLogs = [];
+
+function updateRoomStatus(roomValue) {
+    const roomStatus = document.getElementById('roomStatus');
+    const roomStatusText = document.getElementById('roomStatusText');
+    
+    // Check for state change
+    if (roomValue !== currentRoomState) {
+        const now = new Date();
+        const logEntry = {
+            timestamp: now,
+            status: roomValue === 1 ? 'entered' : 'left',
+            date: now.toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            }),
+            time: now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            })
+        };
+        
+        entryLogs.unshift(logEntry);
+        
+        // Keep only last 50 logs
+        if (entryLogs.length > 50) {
+            entryLogs = entryLogs.slice(0, 50);
+        }
+        
+        updateEntryLogsDisplay();
+        currentRoomState = roomValue;
+    }
+    
+    // Update room status display
+    if (roomValue === 1) {
+        roomStatus.classList.remove('vacant');
+        roomStatus.classList.add('occupied');
+        roomStatusText.textContent = 'OCCUPIED';
+    } else {
+        roomStatus.classList.remove('occupied');
+        roomStatus.classList.add('vacant');
+        roomStatusText.textContent = 'VACANT';
+    }
+}
+
+function updateEntryLogsDisplay() {
+    const entryLogsList = document.getElementById('entryLogsList');
+    
+    if (entryLogs.length === 0) {
+        entryLogsList.innerHTML = '<div class="noLogs">No entry logs yet</div>';
+        return;
+    }
+    
+    entryLogsList.innerHTML = entryLogs.map(log => `
+        <div class="logEntry ${log.status === 'entered' ? 'entry' : 'exit'}">
+            <div class="logIcon">${log.status === 'entered' ? '🟢' : '🔴'}</div>
+            <div class="logDetails">
+                <div class="logDate">${log.date}</div>
+                <div class="logTime">${log.time}</div>
+            </div>
+            <div class="logStatus ${log.status}">${log.status === 'entered' ? 'ENTERED' : 'LEFT'}</div>
+        </div>
+    `).join('');
+}
+
 // -------- WebSocket ECG & MPU --------
 let ws = new WebSocket(`ws://${window.location.hostname}:8080/ws`);
 let ecgValues = Array(50).fill(0);
@@ -713,6 +1507,16 @@ ws.onmessage = (event)=>{
             <div class="mpuBox green">Gz<span class="mpuNumber">${data.data.gz}</span></div>
         `;
         document.getElementById("mpuTime").innerText="Updated: "+new Date().toLocaleTimeString();
+
+        // Update room status if room data is present
+        if (typeof data.data.room !== 'undefined') {
+            updateRoomStatus(data.data.room);
+        }
+
+        // Update temperature if temperature data is present
+        if (typeof data.data.object !== 'undefined' && typeof data.data.ambient !== 'undefined') {
+            updateTemperature(data.data.object, data.data.ambient);
+        }
     }
     if(data.type==='emergency'){ alert("🚨 EMERGENCY ALERT RECEIVED!"); }
 };
