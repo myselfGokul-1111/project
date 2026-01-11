@@ -1,2 +1,37 @@
-node_modules
+# ---------------------------
+# Core app folders/files
+# ---------------------------
+node_modules/
+.env
+data/
+*.db
+
+# Build / cache
+dist/
+.tmp/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS clutter
+.DS_Store
+Thumbs.db
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+
+# Generated logs
+logs/
+*.log
+
+# Optional: ignore backups
+*.bak
+*.old
+
+# Optional: ignore coverage
+coverage/
+render.yaml
 
